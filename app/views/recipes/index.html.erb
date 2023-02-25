@@ -1,0 +1,55 @@
+<div class="container">
+  <h2>
+    Recipes
+  </h2>
+  <div class="container-header mt-10">
+    <div class="search-bar">
+      <%= form_with url: root_path, method: :get do |form| %>
+        <%= form.label 'Type below what ingredients you have to search for recipes:' %>
+        <%= form.select :ingredients, [], { include_blank: false, selected: params[:ingredients] }, { selected: params[:ingredients], class: 'select2 search', multiple: true } %>
+        <div class="hint">
+          Press ENTER for each ingredient you want to include in the search
+        </div>
+        <%= form.submit 'Search', class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+    <hr class="rounded">
+    <% if params[:ingredients].present? %>
+      <h4>Results for the ingredients: "<%= params[:ingredients].join(', ') %>"</h4>
+    <% end %>
+    <div class="page-entries-info mt-10">
+      <%= page_entries_info @recipes %>
+    </div>
+  </div>
+  <div class="container-body">
+    <table>
+      <thead>
+      <tr>
+        <th>Image</th>
+        <th>Ratings</th>
+        <th>Title</th>
+        <th>Category</th>
+        <th>Cook time</th>
+        <th>Prep time</th>
+        <th>Ingredients</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @recipes.each do |recipe| %>
+        <tr>
+          <td><%= image_tag recipe.image, width: '100px' %></td>
+          <td><%= recipe.ratings %></td>
+          <td><%= link_to recipe.title, recipe_path(recipe) %></td>
+          <td><%= recipe.category %></td>
+          <td><%= recipe.cook_time %></td>
+          <td><%= recipe.prep_time %></td>
+          <td><%= pretty_print_ingredients(recipe) %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="container-footer">
+    <%= paginate @recipes %>
+  </div>
+</div>

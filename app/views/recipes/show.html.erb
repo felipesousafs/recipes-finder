@@ -1,0 +1,37 @@
+<div class="container">
+  <div id="recipe-title">
+    <h2>
+      <%= @recipe.title %>
+    </h2>
+    <h5><em class="glyphicon glyphicon-star"></em> <%= @recipe.ratings %></h5>
+  </div>
+
+  <div id="recipe-details">
+    <div class="row">
+      <div class="col-sm-6 col-xs-12">
+        <div id="recipe-image">
+          <%= image_tag @recipe.image, width: '100%' %>
+        </div>
+      </div>
+      <div class="col-sm-6 col-xs-12">
+        <p id="category">
+          <strong>Category: </strong><%= @recipe.category %>
+        </p>
+        <p id="author">
+          <strong>Author: </strong><%= @recipe.author %>
+        </p>
+        <p id="prep_cook_time">
+          <strong>Prep time: </strong><%= @recipe.prep_time %> | <strong>Cook time: </strong> <%= @recipe.cook_time %>
+        </p>
+        <div id="ingredients">
+          <strong>Ingredients: </strong>
+          <ul>
+            <% @recipe.ingredients.each do |ingredient| %>
+              <li><%= ingredient %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
