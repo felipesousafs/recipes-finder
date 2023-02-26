@@ -28,6 +28,8 @@ class Recipe < ApplicationRecord
                   }
 
   def self.search(ingredients_list)
+    ingredients_list = [ingredients_list] if ingredients_list.instance_of?(String)
+
     if ingredients_list&.join.blank?
       # if ingredients param is empty, return all ordered by ratings
       order('ratings DESC')
