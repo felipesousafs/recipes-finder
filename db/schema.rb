@@ -10,22 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_225_135_600) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_25_135600) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'fuzzystrmatch'
-  enable_extension 'plpgsql'
+  enable_extension "fuzzystrmatch"
+  enable_extension "plpgsql"
 
-  create_table 'recipes', force: :cascade do |t|
-    t.string 'title'
-    t.integer 'cook_time'
-    t.integer 'prep_time'
-    t.text 'ingredients', default: [], array: true
-    t.decimal 'ratings'
-    t.string 'cuisine'
-    t.string 'category'
-    t.string 'author'
-    t.string 'image'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "recipes", force: :cascade do |t|
+    t.string "title"
+    t.integer "cook_time"
+    t.integer "prep_time"
+    t.text "ingredients", default: [], array: true
+    t.decimal "ratings"
+    t.string "cuisine"
+    t.string "category"
+    t.string "author"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
+
 end

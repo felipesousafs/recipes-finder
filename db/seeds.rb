@@ -6,4 +6,10 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-Recipe.create(JSON.parse(File.read('lib/assets/recipes-en.json')))
+if Recipe.count.zero?
+  p '> Populating database...'
+  Recipe.create(JSON.parse(File.read('lib/assets/recipes-en.json')))
+  p '> Done.'
+else
+  p '> Database already populated. No seed executed.'
+end
