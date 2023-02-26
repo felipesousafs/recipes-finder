@@ -1,24 +1,20 @@
-# README
+# Recipes finder
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### How to run:
+```
+docker-compose build
+docker-compose up
+```
+###### If you don't want to use docker, you can run the following commands:
 
-Things you may want to cover:
+```
+bundle install
+rails db:create
+rails db:migrate
+rails db:seed
+rails server
+```
 
-* Ruby version
 
-* System dependencies
+##### Search feature developed using [pg_search](https://github.com/Casecommons/pg_search). Customizations to pg_search were made taking [this article](https://pablo-curell-mompo.medium.com/understanding-and-tweaking-pg-search-62c125b2ded1) as reference.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
