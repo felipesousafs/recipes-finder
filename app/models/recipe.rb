@@ -23,11 +23,9 @@ class Recipe < ApplicationRecord
                           }
                         }
                       },
-                      order_within_rank: "recipes.ratings DESC",
+                      order_within_rank: 'recipes.ratings DESC'
                     }
                   }
-
-  private
 
   def self.search(ingredients_list)
     if ingredients_list&.join.blank?
@@ -41,7 +39,7 @@ class Recipe < ApplicationRecord
   def self.parsed_ingredients_list(ingredients_list)
     return if ingredients_list.blank?
 
-    ingredients_list.reject! { |ingredient| ingredient.blank? }
+    ingredients_list.compact_blank!
 
     # i.e: ['tablespoon fresh', 'rice'] returns 'tablespoon<->fresh rice'
     ingredients_list.map { |ingredient| ingredient.gsub(' ', '<->') }.join(' ')

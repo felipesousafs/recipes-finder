@@ -1,0 +1,87 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  NewCops: enable
+
+  TargetRailsVersion: 7.0
+  TargetRubyVersion: 3.1
+
+  Exclude:
+    - 'db/**/*'
+    - 'Rakefile'
+    - 'config/**/*'
+    - 'vendor/**/*'
+    - 'bin/*'
+
+  UseCache: false
+
+Layout/DotPosition:
+  EnforcedStyle: trailing
+
+Metrics/BlockLength:
+  AllowedMethods: ['describe', 'context', 'feature', 'scenario', 'let', 'configure', 'included']
+  Exclude:
+    - 'spec/integration/**/*.rb'
+
+Metrics/MethodLength:
+  Max: 15
+  Exclude:
+    - 'bin/bundle'
+    - 'spec/integration/**/*.rb'
+
+RSpec/EmptyExampleGroup:
+  Exclude:
+    - 'spec/integration/**/*.rb'
+
+RSpec/AnyInstance:
+  Enabled: false
+RSpec/ExampleLength:
+  Enabled: false
+RSpec/LetSetup:
+  Enabled: false
+RSpec/MultipleExpectations:
+  Enabled: false
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+RSpec/NestedGroups:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/HashSyntax:
+  EnforcedShorthandSyntax: never
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - 'bin/bundle'
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - 'bin/bundle'
+
+Layout/LineLength:
+  Exclude:
+    - 'bin/bundle'
+
+RSpec/ScatteredSetup:
+  Exclude:
+    - 'spec/integration/**/*.rb'
+
+RSpec/DescribeClass:
+  Exclude:
+    - 'spec/integration/**/*.rb'
+
+RSpec/PendingWithoutReason:
+  Exclude:
+    - 'spec/integration/**/*.rb'
+
